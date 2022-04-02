@@ -10,13 +10,14 @@ const Home = () => {
   const [tuits, setTuits] = useState([]);
   const [tuit, setTuit] = useState('');
   const userId = uid;
-  const findTuits = () =>
-      service.findAllTuits()
+  const findTuits = () => {
+    service.findAllTuits()
         .then(tuits => setTuits(tuits));
+  }
   useEffect(() => {
-    let isMounted = true;
+    // let isMounted = true;
     findTuits()
-    return () => {isMounted = false;}
+    // return () => {isMounted = false;}
   }, []);
   const createTuit = () =>
       service.createTuit('my', {tuit})

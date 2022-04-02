@@ -22,10 +22,11 @@ const Tuits = ({tuits = [], refreshTuits}) => {
 
     return (
         <div>
-          <ul className="ttr-tuits list-group">
+          <ul className="ttr-tuits list-group ">
             {
               tuits.map && tuits.map(tuit =>
-                  <Tuit key={tuit._id}
+                  <Tuit className="the-tuit"
+                        key={tuit._id}
                         deleteTuit={deleteTuit}
                         likeTuit={likeTuit}
                         dislikeTuit={dislikeTuit}

@@ -29,8 +29,7 @@ const Tuit = ({deleteTuit, likeTuit, dislikeTuit,tuit}) => {
         return old;
     }
   return(
-    // <li onClick={() => navigate(`/tuit/${tuit._id}`)}
-    <li className="p-2 ttr-tuit list-group-item d-flex rounded-0">
+      <li className="p-2 ttr-tuit list-group-item d-flex rounded-0">
       <div className="pe-2">
         {
           tuit.postedBy &&
@@ -57,7 +56,7 @@ const Tuit = ({deleteTuit, likeTuit, dislikeTuit,tuit}) => {
           tuit.image &&
           <TuitImage tuit={tuit}/>
         }
-        <TuitStats tuit={tuit} likeTuit={likeTuit} dislikeTuit={dislikeTuit}/>
+        {/*<TuitStats tuit={tuit} likeTuit={likeTuit} dislikeTuit={dislikeTuit}/>*/}
       </div>
     </li>
   );

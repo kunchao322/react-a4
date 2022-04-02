@@ -1,20 +1,26 @@
-import {act, create} from "react-test-renderer"
-import tuitsJson from "./tuits.json"
-import Tuits from "./tuits";
+import Tuits from "./index";
+import tuitsData from "./tuits-data.json"
+import {act, create} from "react-test-renderer";
+import {HashRouter} from "react-router-dom";
 
 test('tuits render', () => {
-    let tuitsRender
+    let tuits
     act(() => {
-        tuitsRender = create(
-            <Tuits
-                tuits={tuitsJson}/>
+        tuits = create(
+            <HashRouter>
+                <Tuits
+                    tuits={tuitsData}
+                    refreshTuits={() => {}}
+                />
+            </HashRouter>
         )
     })
-    const root = tuitsRender.root
-    const ttrTuits = root.findAllByProps({
-        className: 'ttr-tuit'})
-    expect(ttrTuits.length).toBe(tuitsJson.length)
-    ttrTuits.forEach((ttrTuit, ndx) => {
-        expect(ttrTuit.props.children).toBe(tuitsJson[ndx].tuit)
-    })
+    const root = tuits.root;
+    const tuitItems = root.findAllByProps({className: 'the-tuit'})
+    expect(tuitItems.length).toBe(tuitsData.length)
+
+    const tuitList = root.findAllByProps({className: 'list-group-item'})
+    // tuitItems[0].findAllByProps({className: 'ttr-tuit'})
+    console.log(tuitList)
+
 })

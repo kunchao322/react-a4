@@ -4,10 +4,12 @@ import * as likeService from "../../services/likes-service";
 import * as dislikeService from "../../services/dislikes-service";
 
 const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
+
     const [like, setLike] = useState(false);
     const [dislike, setDislike] = useState(false);
 
-    const userAlreadyLikedTuit = async () =>{
+    const likeStatus = async () =>{
+
         const objectLike = await likeService.userAlreadyLikedTuit('me', tuit._id);
         const objectDisLike = await  dislikeService.userAlreadyDislikedTuit('me', tuit._id);
         if(objectLike){
@@ -22,7 +24,7 @@ const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
         }
     }
     useEffect( ()=>{
-        userAlreadyLikedTuit()}, [tuit]);
+        likeStatus()}, [tuit]);
 
     return (
       <div className="row mt-2">
