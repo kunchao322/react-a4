@@ -4,15 +4,9 @@ import {useEffect, useState} from "react";
 
 const MyDislikes = () => {
     const [dislikedTuits, setDislikedTuits] = useState([]);
-    // const findTuitsIDislike = () =>
-    //     service.findAllTuitsDislikedByUser("me")
-    //         .then((tuits) => setDislikedTuits(tuits));
-    const findTuitsIDislike = () => {
-        const tuitsLiked =  service.findAllTuitsDislikedByUser("me");
-        console.log(tuitsLiked);
-
-    }
-
+    const findTuitsIDislike = () =>
+        service.findAllTuitsDislikedByUser("me")
+            .then((tuits) => setDislikedTuits(tuits));
     useEffect(findTuitsIDislike, []);
     
     return(
